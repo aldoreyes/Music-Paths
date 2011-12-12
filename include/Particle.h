@@ -20,7 +20,7 @@ class Particle{
 public:
     Particle(const ci::Vec2f &_loc, const ci::Vec2f &_vel, float _mass );
     void render();
-    void update(const ci::Vec2f &_vel);
+    void update(const ci::Vec2f &_velRepl, const ci::Vec2f &_velAttr);
     
     float mass;
     float radius;

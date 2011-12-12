@@ -17,9 +17,12 @@
 		00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 00CCAF14116A9FEE008396D5 /* CinderApp.icns */; };
 		4706195D1478CB7500155437 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4706195C1478CB7500155437 /* Particle.cpp */; };
 		47061985147999A200155437 /* ParticleController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 47061984147999A200155437 /* ParticleController.cpp */; };
+		470F129D148AFA8F00D34C72 /* cover.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 470F129C148AFA8F00D34C72 /* cover.jpg */; };
+		476F9AE7148704430057CC34 /* 02-jorge_ciccioli_-_gum_ascion_remix_digital_only.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 476F9AE6148704430057CC34 /* 02-jorge_ciccioli_-_gum_ascion_remix_digital_only.mp3 */; };
 		47737D1C14676E0F0022801D /* troy_pierce-i_need_a_guide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 47737D1B14676E0F0022801D /* troy_pierce-i_need_a_guide.mp3 */; };
 		479869691479C71000EF1CB0 /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 479869681479C71000EF1CB0 /* particle.png */; };
 		479869731479DB7000EF1CB0 /* PotentialField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 479869721479DB7000EF1CB0 /* PotentialField.cpp */; };
+		47C0EEE4148020920018B192 /* Wolfgang Amadeus Mozart - Piano Concerto No. 21 - Andante.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 47C0EEE3148020920018B192 /* Wolfgang Amadeus Mozart - Piano Concerto No. 21 - Andante.mp3 */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
 		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
 		53E3CDFC0E86099300238D2B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E3CDFB0E86099300238D2B /* Carbon.framework */; };
@@ -42,6 +45,8 @@
 		32CA4F630368D1EE00C91783 /* RoboticaProject_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoboticaProject_Prefix.pch; sourceTree = "<group>"; };
 		4706195C1478CB7500155437 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
 		47061984147999A200155437 /* ParticleController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleController.cpp; sourceTree = "<group>"; };
+		470F129C148AFA8F00D34C72 /* cover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cover.jpg; path = cinder/myCode/RoboticaProject/resources/cover.jpg; sourceTree = DEVELOPER_DIR; };
+		476F9AE6148704430057CC34 /* 02-jorge_ciccioli_-_gum_ascion_remix_digital_only.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "02-jorge_ciccioli_-_gum_ascion_remix_digital_only.mp3"; path = "cinder/myCode/RoboticaProject/resources/02-jorge_ciccioli_-_gum_ascion_remix_digital_only.mp3"; sourceTree = DEVELOPER_DIR; };
 		47737D1B14676E0F0022801D /* troy_pierce-i_need_a_guide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "troy_pierce-i_need_a_guide.mp3"; path = "cinder/myCode/RoboticaProject/resources/troy_pierce-i_need_a_guide.mp3"; sourceTree = DEVELOPER_DIR; };
 		479869641479A41000EF1CB0 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Particle.h; path = cinder/myCode/RoboticaProject/include/Particle.h; sourceTree = DEVELOPER_DIR; };
 		479869651479A41000EF1CB0 /* ParticleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParticleController.h; path = cinder/myCode/RoboticaProject/include/ParticleController.h; sourceTree = DEVELOPER_DIR; };
@@ -49,6 +54,7 @@
 		479869671479A41000EF1CB0 /* Resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = cinder/myCode/RoboticaProject/include/Resources.h; sourceTree = DEVELOPER_DIR; };
 		479869681479C71000EF1CB0 /* particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = particle.png; path = cinder/myCode/RoboticaProject/resources/particle.png; sourceTree = DEVELOPER_DIR; };
 		479869721479DB7000EF1CB0 /* PotentialField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PotentialField.cpp; sourceTree = "<group>"; };
+		47C0EEE3148020920018B192 /* Wolfgang Amadeus Mozart - Piano Concerto No. 21 - Andante.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Wolfgang Amadeus Mozart - Piano Concerto No. 21 - Andante.mp3"; path = "cinder/myCode/RoboticaProject/resources/Wolfgang Amadeus Mozart - Piano Concerto No. 21 - Andante.mp3"; sourceTree = DEVELOPER_DIR; };
 		5323E6B10EAFCA74003A9687 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		5323E6B50EAFCA7E003A9687 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		53E3CDFB0E86099300238D2B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
@@ -150,6 +156,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				470F129C148AFA8F00D34C72 /* cover.jpg */,
+				476F9AE6148704430057CC34 /* 02-jorge_ciccioli_-_gum_ascion_remix_digital_only.mp3 */,
+				47C0EEE3148020920018B192 /* Wolfgang Amadeus Mozart - Piano Concerto No. 21 - Andante.mp3 */,
 				479869681479C71000EF1CB0 /* particle.png */,
 				47737D1B14676E0F0022801D /* troy_pierce-i_need_a_guide.mp3 */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -220,6 +229,9 @@
 				00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */,
 				47737D1C14676E0F0022801D /* troy_pierce-i_need_a_guide.mp3 in Resources */,
 				479869691479C71000EF1CB0 /* particle.png in Resources */,
+				47C0EEE4148020920018B192 /* Wolfgang Amadeus Mozart - Piano Concerto No. 21 - Andante.mp3 in Resources */,
+				476F9AE7148704430057CC34 /* 02-jorge_ciccioli_-_gum_ascion_remix_digital_only.mp3 in Resources */,
+				470F129D148AFA8F00D34C72 /* cover.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
