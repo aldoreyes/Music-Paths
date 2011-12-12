@@ -6,19 +6,18 @@
 #include "cinder/vector.h"
 #include "cinder/ImageIo.h"
 #include "cinder/gl/Texture.h"
-
 #include "Resources.h"
-
 #include "PotentialField.h"
 #include "ParticleController.h"
 
 
 using namespace ci;
 using namespace ci::app;
-
+using namespace std;
 
 //globals
 gl::Texture *particleImg, *potFldImg;
+bool ALLOWMOVE(true), ALLOWVECTORS, ALLOWFULLSCREEN, ALLOWINERTIA, ALLOWMOVEATTRACTORS, ALLOWEQUALIZER;
 
 class RoboticaProjectApp : public AppBasic {
   public:
@@ -26,31 +25,67 @@ class RoboticaProjectApp : public AppBasic {
 	void update();
 	void draw();
     void drawFft();
+    void prepareSettings(Settings *settings);
     void mouseUp( MouseEvent event );
+    void keyDown( KeyEvent event );	
     
     audio::TrackRef mTrack;
 	audio::PcmBuffer32fRef mPcmBuffer;
-    ParticleController particleC;
+    ParticleController *particleC;
     
-    
+private:
     bool mAddParticle;
     Vec2f mAddPos;
+    std::shared_ptr<float> fftRef;
+    uint16_t bandCount;
 };
+
+
+void RoboticaProjectApp::prepareSettings( Settings *settings ){
+    settings->setWindowSize( 640, 360 );
+    settings->setFrameRate( 60.0f );
+    
+}
+
+void RoboticaProjectApp::keyDown( KeyEvent event )
+{
+	char key = event.getChar();
+	
+	if( ( key == 'm' ) || ( key == 'M' ) )
+		ALLOWMOVE = ! ALLOWMOVE;
+    else if( ( key == 'a' ) || ( key == 'A' ) )
+		ALLOWMOVEATTRACTORS = ! ALLOWMOVEATTRACTORS;
+	else if( ( key == 'v' ) || ( key == 'V' ) )
+		ALLOWVECTORS = ! ALLOWVECTORS;
+    else if( ( key == 'i' ) || ( key == 'I' ) )
+		ALLOWINERTIA = ! ALLOWINERTIA;
+    else if( ( key == 'e' ) || ( key == 'E' ) )
+		ALLOWEQUALIZER = ! ALLOWEQUALIZER;
+    else if( ( key == 'f' ) || ( key == 'F' ) ){
+		ALLOWFULLSCREEN = ! ALLOWFULLSCREEN;
+        setFullScreen(ALLOWFULLSCREEN);
+    }
+}
 
 void RoboticaProjectApp::setup()
 {
     
+    
+    
+    bandCount = 12;
+    
     particleImg = new gl::Texture( loadImage( loadResource( RES_PARTICLE ) ) );
     
     //add the audio track the default audio output
-	mTrack = audio::Output::addTrack( audio::load( loadResource( RES_I_NEED_A_GUIDE ) ) );
-	
+	mTrack = audio::Output::addTrack( audio::load( loadResource( RES_WOLFGANG ) ) );
+    mTrack.get()->setLooping(true);
+    
+    audio::Output::setVolume(2);
 	//you must enable enable PCM buffering on the track to be able to call getPcmBuffer on it later
 	mTrack->enablePcmBuffering( true );
 
+    particleC = new ParticleController(getWindowSize(), bandCount);
     
-    
-	//potFldImg = new gl::Texture( loadImage( loadResource( RES_POT_FIELD ) ) );
 }
 
 
@@ -66,13 +101,19 @@ void RoboticaProjectApp::update()
 {
     //get the latest pcm buffer from the track
 	mPcmBuffer = mTrack->getPcmBuffer();
-
-    if(mAddParticle){
-        particleC.addParticle(mAddPos);
-        mAddParticle = false;
-    }
     
-    particleC.update();
+    if( mPcmBuffer ){
+       // mPcmBuffer->getChannelData( audio::CHANNEL_FRONT_LEFT )
+        fftRef = audio::calculateFft( mPcmBuffer->getChannelData( audio::CHANNEL_FRONT_LEFT ), bandCount );
+        if(mAddParticle){
+            particleC->addParticle(mAddPos);
+            mAddParticle = false;
+        }
+        
+        particleC->update(fftRef, bandCount, getElapsedSeconds());
+    }    
+        
+    
     
 }
 
@@ -97,12 +138,11 @@ void RoboticaProjectApp::draw()
 	gl::clear( Color( 0.0f, 0.0f, 0.0f ) );
     glClear( GL_COLOR_BUFFER_BIT );
 	
-	glPushMatrix();
-    glTranslatef( 0.0, 0.0, 0.0 );
 #if defined( CINDER_MAC )
+    if(ALLOWEQUALIZER){
         drawFft();
+    }
 #endif
-	glPopMatrix();
     
     
     glDepthMask( GL_FALSE );
@@ -110,7 +150,7 @@ void RoboticaProjectApp::draw()
 	glEnable( GL_BLEND );
 	glBlendFunc( GL_SRC_ALPHA, GL_ONE );
     
-    particleC.render();
+    particleC->render();
     
 }
 
@@ -118,13 +158,13 @@ void RoboticaProjectApp::draw()
 #if defined(CINDER_MAC)
 void RoboticaProjectApp::drawFft()
 {
-	float ht = 200.0f;
-	uint16_t bandCount = 12;
+	float ht = 100.0f;
+	
 	
 	if( ! mPcmBuffer ) return;
 	
 	//use the most recent Pcm data to calculate the Fft
-	std::shared_ptr<float> fftRef = audio::calculateFft( mPcmBuffer->getChannelData( audio::CHANNEL_FRONT_LEFT ), bandCount );
+	
 	if( ! fftRef ) {
 		return;
 	}

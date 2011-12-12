@@ -12,18 +12,31 @@
 
 #include <vector>
 #include "cinder/Vector.h"
+#include "cinder/Color.h"
+#include "cinder/Easing.h"
+#include <list>
 
 class PotentialField {
+    
+public:
+    PotentialField(ci::Vec2f &_loc, ci::Vec2f &_vel, float _mass, ci::Color _color, bool repulsive = true);
+    void render();
+    void update(float _force, const double elapsedSeconds);
+    void calculateForceOnPos(const ci::Vec2f &_pos, ci::Vec2f &_vel);
+    
 private:
     float force;
+    float easingForce;
     float mass;
-    ci::Vec2d loc;
-public:
-    PotentialField(ci::Vec2d &_loc, float _mass);
-    void render();
-    void update(float _force);
-    void calculateForceOnPos(ci::Vec2d &_pos, ci::Vec2d &_vel);
-    
+    ci::Vec2f loc;
+    ci::Vec2f vel;
+    ci::Color color;
+    float time;
+    cinder::EaseOutQuad ease;
+    float areaOfInfluence;
+    float radius;
+    std::list<ci::Vec2f> vectors;
+    bool isRepulsive;
     
 };
 
